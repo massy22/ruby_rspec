@@ -27,4 +27,11 @@ describe GridPoints do
       it { expect(subject).to be false }
     end
   end
+
+  describe '#connected?' do
+    let(:grid_point_1) { GridPoint.new(1, 1) }
+    let(:grid_point_2) { GridPoint.new(1, 2) }
+    let(:grid_points) { GridPoints.new(grid_point_1, grid_point_2) }
+    it { expect(grid_points.connected?).to be grid_point_1.neighbor?(grid_point_2) }
+  end
 end
