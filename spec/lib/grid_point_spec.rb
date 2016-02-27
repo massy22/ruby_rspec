@@ -42,4 +42,48 @@ describe GridPoint do
       end
     end
   end
+
+  describe "#neighbor?" do
+    context "引数で渡されたオブジェクトが同じ座標のとき" do
+      it "falseを返す" do
+        grid_point_2 = grid_point.dup
+        expect(grid_point.neighbor?(grid_point_2)).to be false
+      end
+    end
+
+    context "引数で渡されたオブジェクトのx座標が3、y座標2のとき" do
+      it "falseを返す" do
+        grid_point_2 = GridPoint.new(3, 2)
+        expect(grid_point.neighbor?(grid_point_2)).to be false
+      end
+    end
+
+    context "引数で渡されたオブジェクトが上で隣り合っているとき" do
+      it "trueを返す" do
+        grid_point_2 = GridPoint.new(1, 3)
+        expect(grid_point.neighbor?(grid_point_2)).to be true
+      end
+    end
+
+    context "引数で渡されたオブジェクトが右で隣り合っているとき" do
+      it "trueを返す" do
+        grid_point_2 = GridPoint.new(2, 2)
+        expect(grid_point.neighbor?(grid_point_2)).to be true
+      end
+    end
+
+    context "引数で渡されたオブジェクトが下で隣り合っているとき" do
+      it "trueを返す" do
+        grid_point_2 = GridPoint.new(1, 1)
+        expect(grid_point.neighbor?(grid_point_2)).to be true
+      end
+    end
+
+    context "引数で渡されたオブジェクトが左で隣り合っているとき" do
+      it "trueを返す" do
+        grid_point_2 = GridPoint.new(0, 2)
+        expect(grid_point.neighbor?(grid_point_2)).to be true
+      end
+    end
+  end
 end
